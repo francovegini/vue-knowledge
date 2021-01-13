@@ -29,6 +29,22 @@ module.exports = app => {
         } catch (msg) {
             return res.status(400).send(msg);
         }
+
+        user.password = encryptPassword(user.password);
+        delete user.confirmPassword;
+
+        if (user.id) {
+            app.db('users')
+                .update(user)
+                .where({ id: user.id })
+                .then(_ => res.status(204).send())
+                .catch(err => res.status(500).send(err));
+        } else {
+            app.db('users')
+                .insert(user)
+                .then(_ => res.status(204).send())
+                .catch(err => res.status(500).send(err));
+        }
     }
 
     return { save };
