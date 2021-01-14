@@ -19,6 +19,11 @@ module.exports = app => {
                 .where({ id: category.id })
                 .then(_ => res.status(204).send())
                 .catch(err => res.status(500).send(err));
+        } else {
+            app.db('categories')
+                .insert(category)
+                .then(_ => res.status(204).send())
+                .catch(err => res.status(500).send(err));
         }
     }
 }
