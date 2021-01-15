@@ -68,11 +68,24 @@ module.exports = app => {
         });
 
         categoriesWithPath.sort((a, b) => {
-            if(a.path < b.path) return -1;
-            if(a.path > b.path) return 1;
+            if (a.path < b.path) return -1;
+            if (a.path > b.path) return 1;
             return 0;
         });
 
         return categoriesWithPath;
+    }
+
+    const get = (req, res) => {
+        app.db('categories')
+            .then(categories => res.json(withPath(categories)))
+            .catch(err => res.status(500).send(err));
+    }
+
+    const getById = (req, res) => {
+        app.db('categories')
+            .where({ id: req.params.id }).first()
+            .then(category => res.json(category))
+            .catch(err => res.status(500).send(err));
     }
 }
