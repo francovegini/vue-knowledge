@@ -33,5 +33,17 @@ module.exports = app => {
 
     }
 
-    return { save };
+    const remove = async (req, res) => {
+
+        try {
+            const rowsDeleted = await app.db('articles')
+                .where({ id: req.params.id }).del();
+            notExistsOrError(rowsDeleted, "Artigo não foi encontrado.");
+        } catch (msg) {
+            res.status(400).send(msg);
+        }
+
+    }
+
+    return { save, remove };
 }
