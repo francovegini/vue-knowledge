@@ -8,16 +8,16 @@ module.exports = app => {
     app.route('/users')
         .all(app.config.passport.authenticate())
         .post(admin(app.api.user.save))
-        .get(app.api.user.get);
+        .get(admin(app.api.user.get));
 
     app.route('/users/:id')
         .all(app.config.passport.authenticate())
         .put(admin(app.api.user.save))
-        .get(app.api.user.getById);
+        .get(admin(app.api.user.getById));
 
     app.route('/categories')
         .all(app.config.passport.authenticate())
-        .get(app.api.category.get)
+        .get(admin(app.api.category.get))
         .post(admin(app.api.category.save));
 
     app.route('/categories/tree')
