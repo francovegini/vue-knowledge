@@ -87,4 +87,8 @@ export default {
     text-decoration: none;
     color: #000;
 }
+
+.user-dropdown-content i {
+    padding-right: 5px;
+}
 </style>
