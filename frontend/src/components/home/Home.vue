@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="home">
         <PageTitle icon="fa fa-home" main="Dashboard" sub="Base de conhecimento"/>
     </div>
 </template>
