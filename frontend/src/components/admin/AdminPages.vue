@@ -1,6 +1,6 @@
 <template>
     <div class="admin-pages">
-        <PageTitle icon="fa fa-cogs" main="Administração do sistema" sub="Cadastro & Cia"/>
+        <PageTitle icon="fa fa-cogs" main=" Administração do sistema" sub="Cadastro & Cia"/>
     </div>
 </template>
 
