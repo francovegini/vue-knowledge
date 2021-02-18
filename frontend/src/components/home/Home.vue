@@ -6,10 +6,27 @@
 
 <script>
 import PageTitle from "@/components/template/PageTitle";
+import Stat from "@/components/home/Stat";
+import axios from 'axios';
+import { baseApiUrl } from "@/global";
 
 export default {
     name: "Home",
-    components: { PageTitle }
+    components: { PageTitle, Stat },
+    data: function () {
+        return {
+            stat: {}
+        }
+    },
+    methods: {
+        getStats() {
+            axios.get(`${ baseApiUrl }/stats`)
+                .then(res => this.stat = res.data);
+        }
+    },
+    mounted() {
+        this.getStats();
+    }
 }
 </script>
 
