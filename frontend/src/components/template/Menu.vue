@@ -8,8 +8,8 @@
 import { mapState } from 'vuex';
 
 export default {
-  name: "Menu",
-  computed: mapState(['isMenuVisible'])
+    name: "Menu",
+    computed: mapState(['isMenuVisible'])
 }
 </script>
 

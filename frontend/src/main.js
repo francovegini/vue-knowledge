@@ -12,7 +12,7 @@ Vue.config.productionTip = false
 require('axios').defaults.headers.common['Authorization'] = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MiwibmFtZSI6IkZyYW5jbyBWZWdpbmkiLCJlbWFpbCI6ImZyYW5jb3ZlZ2luaUBob3RtYWlsLmNvbSIsImFkbWluIjp0cnVlLCJpYXQiOjE2MTM2MTQ2OTcsImV4cCI6MTYxMzg3Mzg5N30.Pvkn7ezFY2uZ2lpC9A-41nzCN5QKFzlvqXkvRUfEW5g";
 
 new Vue({
-  store,
-  router,
-  render: h => h(App)
+    store,
+    router,
+    render: h => h(App)
 }).$mount('#app')
