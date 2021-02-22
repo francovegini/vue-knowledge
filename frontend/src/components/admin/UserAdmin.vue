@@ -33,7 +33,11 @@
                     </b-form-group>
                 </b-col>
             </b-row>
+            <b-button variant="primary" v-if="mode === 'save'" @click="save">Salvar</b-button>
+            <b-button variant="danger" v-if="mode === 'remove'" @click="remove">Remover</b-button>
+            <b-button class="ml-2" @click="cancel">Cancelar</b-button>
         </b-form>
+        <hr/>
         <b-table hover striped :items="users" :fields="fields"></b-table>
     </div>
 </template>
@@ -64,6 +68,15 @@ export default {
             axios.get(url).then(res => {
                 this.users = res.data;
             })
+        },
+        save() {
+
+        },
+        remove() {
+
+        },
+        cancel() {
+
         }
     },
     mounted() {
