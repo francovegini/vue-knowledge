@@ -6,6 +6,9 @@
 </template>
 
 <script>
+import axios from "axios";
+import { baseApiUrl } from "@/global";
+
 export default {
     name: "CategoryAdmin",
     data: function () {
@@ -21,7 +24,17 @@ export default {
             ]
         }
     },
-    methods: {}
+    methods: {
+        loadCategories() {
+            axios.get(`${ baseApiUrl }/categories`)
+                .then(res => {
+                    this.categories = res.data;
+                })
+        }
+    },
+    mounted() {
+        this.loadCategories();
+    }
 }
 </script>
 
