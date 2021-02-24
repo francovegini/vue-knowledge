@@ -75,11 +75,7 @@ export default {
         },
         loadCategory(category, mode = 'save') {
             this.mode = mode;
-            this.category = {
-                id: category.id,
-                name: category.name,
-                parentId: category.parentId
-            };
+            this.category = { ...category };
         },
         save() {
             const method = this.category.id ? 'put' : 'post';

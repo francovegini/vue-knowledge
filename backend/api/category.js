@@ -3,9 +3,9 @@ module.exports = app => {
 
     const save = (req, res) => {
         const category = {
-            id: res.body.id,
-            name: res.body.name,
-            parentId: res.body.parentId
+            id: req.body.id,
+            name: req.body.name,
+            parentId: req.body.parentId
         };
 
         if (req.params.id) {
