@@ -82,6 +82,10 @@ export default {
                 this.users = res.data;
             })
         },
+        loadUser(user, mode = 'save') {
+            this.mode = mode;
+            this.user = { ...user };
+        },
         save() {
             const method = this.user.id ? 'put' : 'post';
             const id = this.user.id ? `/${ this.user.id }` : '';
@@ -107,10 +111,6 @@ export default {
             this.mode = "save";
             this.user = {};
             this.loadUsers();
-        },
-        loadUser(user, mode = 'save') {
-            this.mode = mode;
-            this.user = { ...user };
         }
     },
     mounted() {
