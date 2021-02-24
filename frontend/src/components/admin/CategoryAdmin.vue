@@ -13,7 +13,13 @@
             <b-row>
                 <b-col>
                     <b-form-group label="Categoria pai:" label-for="category-parentId">
-                        <b-form-select id="category-parentId" :options="categories" v-model="category.parentId"/>
+                        <b-form-select v-if="mode === 'save'"
+                                       id="category-parentId"
+                                       :options="categories" v-model="category.parentId"/>
+                        <b-form-input v-else
+                                      id="category-parentId" type="text"
+                                      v-model="category.path"
+                                      readonly/>
                     </b-form-group>
                 </b-col>
             </b-row>
@@ -105,5 +111,4 @@ export default {
 </script>
 
 <style>
-
 </style>
