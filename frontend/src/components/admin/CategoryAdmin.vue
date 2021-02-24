@@ -41,7 +41,7 @@
 
 <script>
 import axios from "axios";
-import { baseApiUrl } from "@/global";
+import { baseApiUrl, showError } from "@/global";
 
 export default {
     name: "CategoryAdmin",
@@ -72,13 +72,30 @@ export default {
             this.category = { ...category };
         },
         save() {
+            const method = this.category.id ? 'put' : 'post';
+            const id = this.category.id ? `/${ this.category.id }` : '';
 
+            axios[method](`${ baseApiUrl }/categories${ id }`, this.category)
+                .then(() => {
+                    this.$toasted.global.defaultSuccess();
+                    this.reset();
+                })
+                .catch(showError);
         },
         remove() {
+            const id = this.category.id
 
+            axios.delete(`${ baseApiUrl }/categories/${ id }`)
+                .then(() => {
+                    this.$toasted.global.defaultSuccess();
+                    this.reset();
+                })
+                .catch(showError);
         },
         reset() {
-
+            this.mode = 'save';
+            this.category = {};
+            this.loadCategories();
         }
     },
     mounted() {
