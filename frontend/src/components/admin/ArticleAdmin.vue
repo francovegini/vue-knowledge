@@ -18,7 +18,7 @@
                     </b-form-group>
                 </b-col>
             </b-row>
-            <b-row>
+            <b-row v-if="mode === 'save'">
                 <b-col>
                     <b-form-group label="Imagem (URL):" label-for="article-imageUrl">
                         <b-form-input id="article-imageUrl" type="text" v-model="article.imageUrl" required
@@ -42,7 +42,7 @@
                     </b-form-group>
                 </b-col>
             </b-row>
-            <b-row>
+            <b-row v-if="mode === 'save'">
                 <b-col>
                     <b-form-group label="Conteúdo" label-for="article-content">
                         <VueEditor v-model="article.content" placeholder="Informe o conteúdo do artigo"/>
