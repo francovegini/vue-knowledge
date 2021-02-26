@@ -108,8 +108,27 @@ export default {
         },
         loadArticle(article, mode = 'save') {
             this.mode = mode;
-            axios.get(`${ baseApiUrl }/articles/${ article.id }`)
+            const url = `${ baseApiUrl }/articles/${ article.id }`;
+            axios.get(url)
                 .then(res => this.article = res.data);
+        },
+        loadCategories() {
+            const url = `${ baseApiUrl }/categories`
+            axios.get(url)
+                .then(res => {
+                    this.categories = res.data.map(category => {
+                        return { value: category.id, text: category.path };
+                    })
+                });
+        },
+        loadUsers() {
+            const url = `${ baseApiUrl }/users`
+            axios.get(url)
+                .then(res => {
+                    this.users = res.data.map(user => {
+                        return { value: user.id, text: user.name };
+                    })
+                });
         },
         save() {
             const method = this.article.id ? 'put' : 'post';
@@ -140,6 +159,8 @@ export default {
     },
     mounted() {
         this.loadArticles();
+        this.loadCategories();
+        this.loadUsers();
     }
 }
 </script>
