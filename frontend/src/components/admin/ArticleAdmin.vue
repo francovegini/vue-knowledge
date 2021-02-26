@@ -12,14 +12,40 @@
             </b-row>
             <b-row>
                 <b-col>
-                    <b-form-group label="Categoria pai:" label-for="article-parentId">
-                        <b-form-select v-if="mode === 'save'"
-                                       id="article-parentId"
-                                       :options="articles" v-model="article.parentId"/>
-                        <b-form-input v-else
-                                      id="article-parentId" type="text"
-                                      v-model="article.path"
-                                      readonly/>
+                    <b-form-group label="Descrição:" label-for="article-description">
+                        <b-form-input id="article-description" type="text" v-model="article.description" required
+                                      placeholder="Informe a descrição do artigo" :readonly="mode === 'remove'"/>
+                    </b-form-group>
+                </b-col>
+            </b-row>
+            <b-row>
+                <b-col>
+                    <b-form-group label="Imagem (URL):" label-for="article-imageUrl">
+                        <b-form-input id="article-imageUrl" type="text" v-model="article.imageUrl" required
+                                      placeholder="Informe a URL da imagem" :readonly="mode === 'remove'"/>
+                    </b-form-group>
+                </b-col>
+            </b-row>
+            <b-row v-if="mode === 'save'">
+                <b-col>
+                    <b-form-group label="Categoria:" label-for="article-categoryId">
+                        <b-form-select id="article-categoryId"
+                                       :options="categories" v-model="article.categoryId"/>
+                    </b-form-group>
+                </b-col>
+            </b-row>
+            <b-row v-if="mode === 'save'">
+                <b-col>
+                    <b-form-group label="Autor:" label-for="article-userId">
+                        <b-form-select id="article-userId"
+                                       :options="users" v-model="article.userId"/>
+                    </b-form-group>
+                </b-col>
+            </b-row>
+            <b-row>
+                <b-col>
+                    <b-form-group label="Conteúdo" label-for="article-content">
+                        <VueEditor v-model="article.content" placeholder="Informe o conteúdo do artigo"/>
                     </b-form-group>
                 </b-col>
             </b-row>
@@ -66,7 +92,7 @@ export default {
             fields: [
                 { key: 'id', label: 'Código', sortable: true },
                 { key: 'name', label: 'Nome', sortable: true },
-                { key: 'path', label: 'Caminho', sortable: true },
+                { key: 'description', label: 'Descrição', sortable: true },
                 { key: 'actions', label: 'Ações' }
             ]
         }
@@ -75,14 +101,15 @@ export default {
         loadArticles() {
             axios.get(`${ baseApiUrl }/articles`)
                 .then(res => {
-                    this.articles = res.data.map(article => {
-                        return { ...article, value: article.id, text: article.path }
-                    })
+                    this.articles = res.data.data;
+                    this.count = res.data.count;
+                    this.limit = res.data.limit;
                 })
         },
         loadArticle(article, mode = 'save') {
             this.mode = mode;
-            this.article = { ...article };
+            axios.get(`${ baseApiUrl }/articles/${ article.id }`)
+                .then(res => this.article = res.data);
         },
         save() {
             const method = this.article.id ? 'put' : 'post';
