@@ -27,6 +27,10 @@ export default {
             axios.get(url)
                 .then(res => this.category = res.data);
         }
+    },
+    mounted() {
+        this.category.id = this.$route.params.id;
+        this.getCategory();
     }
 }
 </script>
