@@ -44,7 +44,7 @@ export default {
                     this.articles = this.articles.concat(res.data);
                     this.page++;
 
-                    if (res.data.length === 0) {
+                    if (res.data.length === 0 || res.data.length < 3) {
                         this.loadMore = false;
                     }
                 });
