@@ -8,7 +8,7 @@
         </ul>
         <div class="load-more">
             <button v-if="loadMore" @click="getArticles"
-                    class="btn btn-lg btn-outline-primary">Carregar mais..
+                    class="btn btn-md btn-outline-primary">Carregar mais..
             </button>
         </div>
     </div>
@@ -59,4 +59,15 @@ export default {
 </script>
 
 <style>
+    .articles-by-category ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .articles-by-category .load-more {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 25px;
+    }
 </style>
