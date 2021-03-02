@@ -87,4 +87,10 @@ export default {
 	width: 100%;
 	background: transparent;
 }
+
+.tree-filter-empty {
+    color: #CCC;
+    margin-left: 20px;
+	font-size: 1.1rem;
+}
 </style>
