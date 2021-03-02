@@ -28,5 +28,23 @@ export default {
 </script>
 
 <style>
+.article-content {
+    background-color: #FFF;
+    border-radius: 8px;
+    padding: 25px;
+}
 
+.article-content pre {
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+}
+
+.article-content img {
+    max-width: 100%;
+}
+
+.article-content :last-child {
+    margin-bottom: 0;
+}
 </style>
