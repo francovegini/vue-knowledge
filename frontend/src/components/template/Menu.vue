@@ -35,11 +35,26 @@ export default {
 
 <style>
 .menu {
-    grid-area: menu;
-    background: linear-gradient(to right, #232526, #414345);
+	grid-area: menu;
+	background: linear-gradient(to right, #232526, #414345);
 
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+.menu a,
+.menu a:hover {
+	color: #FFF;
+	text-decoration: none;
+}
+
+.menu .tree-node.selected > .tree-content,
+.menu .tree-node .tree-content:hover {
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+.tree-arrow.has-child {
+    filter: brightness(2);
 }
 </style>
