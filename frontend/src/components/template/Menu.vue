@@ -1,15 +1,35 @@
 <template>
     <aside class="menu" v-show="isMenuVisible">
-
+        <Tree :data="treeData" :options="treeOptions" ref="tree"/>
     </aside>
 </template>
 
 <script>
 import { mapState } from 'vuex';
+import Tree from 'liquor-tree';
+import { baseApiUrl } from "@/global";
+import axios from "axios";
 
 export default {
     name: "Menu",
-    computed: mapState(['isMenuVisible'])
+    components: { Tree },
+    computed: mapState(['isMenuVisible']),
+    data: function () {
+        return {
+            treeData: this.getTreeData(),
+            treeOptions: {
+                propertyNames: { 'text': 'name' }
+            }
+        }
+    },
+    methods: {
+        getTreeData() {
+            const url = `${ baseApiUrl }/categories/tree`;
+
+            return axios.get(url)
+                .then(res => res.data);
+        }
+    }
 }
 </script>
 
