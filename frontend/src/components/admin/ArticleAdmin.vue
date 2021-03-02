@@ -2,60 +2,32 @@
     <div class="article-admin">
         <b-form>
             <input id="article-id" type="hidden" v-model="article.id"/>
-            <b-row>
-                <b-col>
-                    <b-form-group label="Nome:" label-for="article-name">
-                        <b-form-input id="article-name" type="text" v-model="article.name" required
-                                      placeholder="Informe o nome do artigo" :readonly="mode === 'remove'"/>
-                    </b-form-group>
-                </b-col>
-            </b-row>
-            <b-row>
-                <b-col>
-                    <b-form-group label="Descrição:" label-for="article-description">
-                        <b-form-input id="article-description" type="text" v-model="article.description" required
-                                      placeholder="Informe a descrição do artigo" :readonly="mode === 'remove'"/>
-                    </b-form-group>
-                </b-col>
-            </b-row>
-            <b-row v-if="mode === 'save'">
-                <b-col>
-                    <b-form-group label="Imagem (URL):" label-for="article-imageUrl">
-                        <b-form-input id="article-imageUrl" type="text" v-model="article.imageUrl" required
-                                      placeholder="Informe a URL da imagem" :readonly="mode === 'remove'"/>
-                    </b-form-group>
-                </b-col>
-            </b-row>
-            <b-row v-if="mode === 'save'">
-                <b-col>
-                    <b-form-group label="Categoria:" label-for="article-categoryId">
-                        <b-form-select id="article-categoryId"
-                                       :options="categories" v-model="article.categoryId"/>
-                    </b-form-group>
-                </b-col>
-            </b-row>
-            <b-row v-if="mode === 'save'">
-                <b-col>
-                    <b-form-group label="Autor:" label-for="article-userId">
-                        <b-form-select id="article-userId"
-                                       :options="users" v-model="article.userId"/>
-                    </b-form-group>
-                </b-col>
-            </b-row>
-            <b-row v-if="mode === 'save'">
-                <b-col>
-                    <b-form-group label="Conteúdo" label-for="article-content">
-                        <VueEditor v-model="article.content" placeholder="Informe o conteúdo do artigo"/>
-                    </b-form-group>
-                </b-col>
-            </b-row>
-            <b-row>
-                <b-col xs="12">
-                    <b-button variant="primary" v-if="mode === 'save'" @click="save">Salvar</b-button>
-                    <b-button variant="danger" v-if="mode === 'remove'" @click="remove">Remover</b-button>
-                    <b-button class="ml-2" @click="reset">Cancelar</b-button>
-                </b-col>
-            </b-row>
+            <b-form-group label="Nome:" label-for="article-name">
+                <b-form-input id="article-name" type="text" v-model="article.name" required
+                              placeholder="Informe o nome do artigo" :readonly="mode === 'remove'"/>
+            </b-form-group>
+            <b-form-group label="Descrição:" label-for="article-description">
+                <b-form-input id="article-description" type="text" v-model="article.description" required
+                              placeholder="Informe a descrição do artigo" :readonly="mode === 'remove'"/>
+            </b-form-group>
+            <b-form-group v-if="mode === 'save'" label="Imagem (URL):" label-for="article-imageUrl">
+                <b-form-input id="article-imageUrl" type="text" v-model="article.imageUrl" required
+                              placeholder="Informe a URL da imagem" :readonly="mode === 'remove'"/>
+            </b-form-group>
+            <b-form-group v-if="mode === 'save'" label="Categoria:" label-for="article-categoryId">
+                <b-form-select id="article-categoryId"
+                               :options="categories" v-model="article.categoryId"/>
+            </b-form-group>
+            <b-form-group v-if="mode === 'save'" label="Autor:" label-for="article-userId">
+                <b-form-select id="article-userId"
+                               :options="users" v-model="article.userId"/>
+            </b-form-group>
+            <b-form-group v-if="mode === 'save'" label="Conteúdo" label-for="article-content">
+                <VueEditor v-model="article.content" placeholder="Informe o conteúdo do artigo"/>
+            </b-form-group>
+            <b-button variant="primary" v-if="mode === 'save'" @click="save">Salvar</b-button>
+            <b-button variant="danger" v-if="mode === 'remove'" @click="remove">Remover</b-button>
+            <b-button class="ml-2" @click="reset">Cancelar</b-button>
         </b-form>
         <hr/>
         <b-table hover striped :items="articles" :fields="fields">
