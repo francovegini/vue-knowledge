@@ -36,7 +36,6 @@ export default {
                 .then(res => res.data);
         },
         onNodeSelected(node) {
-            console.log("se fude")
             this.$router.push({
                 name: 'articlesByCategory',
                 params: { id: node.id }
