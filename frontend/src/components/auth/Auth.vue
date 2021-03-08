@@ -28,6 +28,15 @@ export default {
                     this.$router.push({ path: "/" });
                 })
                 .catch(showError);
+        },
+        signup() {
+            axios.post(`${ baseApiUrl }/signup`, this.user)
+                .then(() => {
+                    this.$toasted.global.defaultSuccess();
+                    this.user = {};
+                    this.showSignup = false;
+                })
+                .catch(showError);
         }
     }
 }
