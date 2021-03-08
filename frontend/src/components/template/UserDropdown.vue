@@ -30,7 +30,7 @@ export default {
             this.$store.commit('setUser', null);
             this.$router.push({ name: 'auth' });
         }
-    }
+    },
     computed: mapState(['user'])
 }
 </script>
