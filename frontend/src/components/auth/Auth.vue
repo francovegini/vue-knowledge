@@ -1,12 +1,15 @@
 <template>
     <div class="auth-content">
         <div class="auth-modal">
-            <img src="@/assets/logo.png" width="200" alt="Logo"
+            <img src="@/assets/logo.png" width="200" alt="Logo"/>
         </div>
     </div>
 </template>
 
 <script>
+
+import axios from "axios";
+import { baseApiUrl, showError, userKey } from "@/global";
 
 export default {
     name: "Auth",
@@ -14,6 +17,17 @@ export default {
         return {
             showSignup: false,
             user: {}
+        }
+    },
+    methods: {
+        signin() {
+            axios.post(`${ baseApiUrl }/signin`, this.user)
+                .then(res => {
+                    this.$store.commit('setUser', res.data);
+                    localStorage.setItem(userKey, JSON.stringify(res.data));
+                    this.$router.push({ path: "/" });
+                })
+                .catch(showError);
         }
     }
 }
