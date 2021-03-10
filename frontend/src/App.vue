@@ -47,6 +47,8 @@ export default {
                 localStorage.removeItem(userKey);
                 this.$router.push({ name: 'auth' });
             }
+
+            this.validatingToken = false;
         }
     }
 }
