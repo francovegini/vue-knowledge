@@ -50,6 +50,9 @@ export default {
 
             this.validatingToken = false;
         }
+    },
+    created() {
+        this.validatingToken();
     }
 }
 </script>
