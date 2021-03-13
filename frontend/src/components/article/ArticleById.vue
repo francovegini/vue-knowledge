@@ -27,7 +27,7 @@ export default {
             .then(res => this.article = res.data);
     },
     updated() {
-        document.querySelectorAll('.article-content pre').forEach(e => {
+        document.querySelectorAll('.article-content pre.ql-syntax').forEach(e => {
             hljs.highlightBlock(e);
         })
     }
