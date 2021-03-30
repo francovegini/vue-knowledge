@@ -1,11 +1,13 @@
 # Vue knowledge
-Projeto desenvolvido com intuito de aperfeiçoar o conhecimento em VueJS
+Aplicação desenvolvida com intuito de aperfeiçoar o conhecimento em VueJS
 
-### Startar Frontend 
-`npm run serve`
+## Prints da aplicação
 
-### Startar Backend
-`npm start`
+### Dashboard
+![](https://github.com/francovegini/vue-knowledge/blob/main/readme/Dashboard.png)
+
+### Artigos
+![](https://github.com/francovegini/vue-knowledge/blob/main/readme/Artigos.png)
 
 ## Créditos
 Cod3r Cursos
